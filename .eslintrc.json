@@ -1,0 +1,66 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "airbnb"
+    ],
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": [
+            "./tsconfig.json"
+        ]
+    },
+    "rules": {
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "max-len": [
+            2,
+            120
+        ],
+        "semi": [
+            2,
+            "never"
+        ],
+        "indent": [
+            "error"
+        ],
+        "import/no-extraneous-dependencies": 0,
+        "no-unused-vars:": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "global-require": 0,
+        "linebreak-style": 0,
+        "import/prefer-default-export": "off",
+        "import/extensions": 0,
+        "import/no-unresolved": 0,
+        "no-underscore-dangle": 0,
+        "no-redeclare": 0,
+        "no-shadow": "off",
+        "class-methods-use-this": "off",
+        "prefer-promise-reject-errors": "off",
+        "no-use-before-define": "off",
+        "no-restricted-globals": "off",
+        "no-useless-escape": "off",
+        "react/require-default-props": [
+            0
+        ],
+        "no-param-reassign": ["error", { "props": false }],
+        "jsx-a11y/control-has-associated-label": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off"
+    }
+}

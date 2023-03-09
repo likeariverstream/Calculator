@@ -1,0 +1,10 @@
+.main {
+  width: 695px;
+  margin: 0 auto;
+  padding: 38px 76px 86px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 60px;
+}

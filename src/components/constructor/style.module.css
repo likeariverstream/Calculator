@@ -1,0 +1,12 @@
+.construction {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 243px;
+    height: 432px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.over {
+    background-color: #F0F9FF;
+}

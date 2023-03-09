@@ -1,0 +1,11 @@
+.operators {
+    width: 240px;
+    height: 56px;
+    display: flex;
+    padding: 4px;
+    gap: 8px;
+    width: 240px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}

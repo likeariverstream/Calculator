@@ -1,0 +1,27 @@
+.display {
+    width: 240px;
+    height: 60px;
+    display: flex;
+    padding: 4px;
+    gap: 8px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    margin: 0;
+    width: 232px;
+    height: 52px;
+    border-radius: 6px;
+    justify-content: flex-end;
+    padding: 4px 4px 4px auto;
+    background-color: #F3F4F6;
+    border: 0;
+}
+
+.input:focus {
+    border: none;
+}
