@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { swap } from '../utils/swap'
 
 type InitialState = {
   list: string[]
@@ -12,48 +13,22 @@ export const constructorSlice = createSlice({
   reducers: {
     addComponent: (state, { payload }) => {
       if (!state.list.includes(payload)) {
-        state.list = [...state.list, payload]
+        state.list = state.list.concat(payload)
       }
     },
     deleteComponent: (state, { payload }) => {
       state.list = state.list.filter((item) => item !== payload)
     },
     moveComponent: (state, { payload }) => {
-      const { dragIndex, hoverIndex } = payload
+      const { draggedId, id } = payload
 
-      if (dragIndex === hoverIndex) {
+      if (draggedId === id) {
         return
       }
-      state.list = [
-        ...state.list.slice(0, dragIndex),
-        ...state.list.slice(dragIndex + 1, hoverIndex + 1),
-        state.list[dragIndex],
-        ...state.list.slice(hoverIndex + 1),
-      ]
-      // let res = []
-      // const { dragIndex, hoverIndex } = payload
-
-      // if (dragIndex === hoverIndex) {
-      //   return state
-      // } if (dragIndex > hoverIndex) {
-      //   res = [
-      //     ...state.list.slice(0, hoverIndex),
-      //     state.list[dragIndex],
-      //     ...state.list.slice(hoverIndex, dragIndex),
-      //     ...state.list.slice(dragIndex + 1),
-      //   ]
-      // } else {
-      //   res = [
-      //     ...state.list.slice(0, dragIndex),
-      //     ...state.list.slice(dragIndex + 1, hoverIndex + 1),
-      //     state.list[dragIndex],
-      //     ...state.list.slice(hoverIndex + 1),
-      //   ]
-      // }
-      // return {
-      //   ...state,
-      //   list: res,
-      // }
+      if (draggedId !== id) {
+        const { list } = state
+        state.list = swap({ list, draggedId, id })
+      }
     },
   },
 })
