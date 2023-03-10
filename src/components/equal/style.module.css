@@ -1,4 +1,4 @@
-.operators {
+.equal {
     width: 240px;
     height: 56px;
     display: flex;
@@ -8,7 +8,6 @@
     box-sizing: border-box;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
     border-radius: 4px;
-    color: #FFFFFF;
 }
 
 .drop {

@@ -1,23 +1,16 @@
 import React from 'react'
 import styles from './style.module.css'
+import { ButtonType } from '../../types/types'
 
-type TButton = {
-  value: string
-  onClick: () => void
-  children?: React.ReactElement | undefined
-  width?: string | undefined
-  backgroundColor?: string | undefined
-  disabled?: boolean
-}
 export function Button({
-  value, onClick, children, width = '72', backgroundColor, disabled = true,
-}: TButton) {
+  value, onClick, children, width = '72', backgroundColor, disabled = true, color,
+}: ButtonType) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={styles.button}
-      style={{ width, backgroundColor }}
+      style={{ width, backgroundColor, color }}
       disabled={disabled}
     >
       {children}

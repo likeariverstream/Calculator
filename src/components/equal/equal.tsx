@@ -5,12 +5,9 @@ import { operators } from '../../data/data'
 import { Button } from '../button/button'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { calculateResult } from '../../store/calculatorSlice'
-import { DragItems } from '../../types/types'
+import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-type ComponentType = {
-  id?: string
-}
 export function Equal({ id }: ComponentType) {
   const dispatch = useAppDispatch()
   const { list } = useAppSelector((state) => state.construction)
@@ -29,7 +26,7 @@ export function Equal({ id }: ComponentType) {
   }
   return (
     <section
-      className={`${styles.operators} ${isOver && styles.drop}`}
+      className={`${styles.equal} ${isOver && styles.drop}`}
       style={isOver ? { border: '1px solid #5D5FEF' } : {}}
       ref={list.includes(DragItems.equal) ? ref : dragRef}
     >
@@ -42,6 +39,7 @@ export function Equal({ id }: ComponentType) {
               key={item.id}
               width="232px"
               backgroundColor="#5D5FEF"
+              color="#FFFFFF"
             />
           )
         }

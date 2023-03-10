@@ -12,8 +12,12 @@ export const constructorSlice = createSlice({
   initialState,
   reducers: {
     addComponent: (state, { payload }) => {
-      if (!state.list.includes(payload)) {
-        state.list = state.list.concat(payload)
+      try {
+        if (typeof payload === 'string' && !state.list.includes(payload)) {
+          state.list.push(payload)
+        }
+      } catch (err) {
+        console.log(`Error: ${err}`)
       }
     },
     deleteComponent: (state, { payload }) => {
