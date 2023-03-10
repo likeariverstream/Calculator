@@ -44,6 +44,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "gh-pages": "^5.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1"
   }
