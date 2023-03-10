@@ -5,7 +5,7 @@ import { useAppSelector } from '../../store/hooks'
 import { DragItems, ComponentType } from '../../types/types'
 
 export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
-  const { result, digits } = useAppSelector((state) => state.calculator)
+  const { memory, digits } = useAppSelector((state) => state.calculator)
   const { list, isRuntime } = useAppSelector((state) => state.construction)
   const [, dragRef] = useDrag(() => ({
     type: DragItems.display,
@@ -30,7 +30,10 @@ export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
         className={styles.container}
         style={{ cursor, opacity }}
       >
-        <span className={styles.value}>{result === Infinity ? 'Не определено' : digits}</span>
+        <span className={`${styles.value} ${digits !== '0' && styles.nonzero}`}>
+          {memory === Infinity ? 'Не определено' : digits}
+
+        </span>
       </div>
     </section>
   )

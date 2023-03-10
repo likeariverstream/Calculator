@@ -10,4 +10,4 @@
 
 [Репозиторий](https://github.com/likeariverstream/Calculator.git)
 
-Страница приложения
+[Страница приложения](https://likeariverstream.github.io/Calculator/)

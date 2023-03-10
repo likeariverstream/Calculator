@@ -27,8 +27,14 @@
 }
 
 .value {
+    color: var(--gray-black-color);
     font-weight: var(--extra-bold-weight);
     line-height: 44px;
     font-size: 36px;
     margin: 4px 8px;
+}
+
+.nonzero {
+    line-height: 19px;
+    font-size: 23px;
 }
