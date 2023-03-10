@@ -8,10 +8,11 @@ import { calculateResult } from '../../store/calculatorSlice'
 import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-export function Equal({ id }: ComponentType) {
+export function Equal({ id, onDoubleClick }: ComponentType) {
   const dispatch = useAppDispatch()
-  const { list } = useAppSelector((state) => state.construction)
+  const { list, isRuntime } = useAppSelector((state) => state.construction)
   const { ref, isOver } = useDragAndDrop(id)
+
   const [, dragRef] = useDrag(() => ({
     type: DragItems.equal,
     item: {
@@ -21,14 +22,17 @@ export function Equal({ id }: ComponentType) {
       didDrop: !!monitor.didDrop(),
     }),
   }), [])
+
   const handleClick = () => {
     dispatch(calculateResult())
   }
+  const equalRef = list.includes(DragItems.equal) ? ref : dragRef
   return (
     <section
       className={`${styles.equal} ${isOver && styles.drop}`}
       style={isOver ? { border: '1px solid #5D5FEF' } : {}}
-      ref={list.includes(DragItems.equal) ? ref : dragRef}
+      ref={isRuntime ? null : equalRef}
+      onDoubleClick={onDoubleClick}
     >
       {operators.map((item) => {
         if (item.value === '=') {

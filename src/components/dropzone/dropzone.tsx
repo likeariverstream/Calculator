@@ -8,9 +8,13 @@ import { addComponent } from '../../store/constructorSlice'
 
 export function DropZone() {
   const dispatch = useAppDispatch()
+  const handleDrop = (id: string) => {
+    dispatch(addComponent(id))
+  }
+
   const [{ isOver }, dropTarget] = useDrop(() => ({
     accept: [DragItems.display, DragItems.digits, DragItems.equal, DragItems.operators],
-    drop: (item: {id: string}) => dispatch(addComponent(item.id)),
+    drop: (item: {id: string}) => handleDrop(item.id),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),

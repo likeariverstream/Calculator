@@ -9,10 +9,10 @@ import { DragItems } from '../../types/types'
 export function Sidebar() {
   return (
     <section className={styles.sidebar}>
-      <Display id={DragItems.display} />
-      <Operators id={DragItems.operators} />
-      <Digits id={DragItems.digits} />
-      <Equal id={DragItems.equal} />
+      <div className={styles.wrapper}><Display id={DragItems.display} /></div>
+      <div className={styles.wrapper}><Operators id={DragItems.operators} /></div>
+      <div className={styles.wrapper}><Digits id={DragItems.digits} /></div>
+      <div className={styles.wrapper}><Equal id={DragItems.equal} /></div>
     </section>
   )
 }

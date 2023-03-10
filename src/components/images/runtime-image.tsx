@@ -1,6 +1,7 @@
 import React from 'react'
+import { ImageType } from '../../types/types'
 
-export function RuntimeImage({ color }: {color: string}) {
+export function RuntimeImage({ color }: ImageType) {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

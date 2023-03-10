@@ -1,21 +1,21 @@
 type Calculate = {
-    digits: string
-    operator: string
-    result: number
+  memory: number
+  operator: string
+  result: number
 }
 
-export function calculate({ digits, operator, result }:Calculate): number {
+export function calculate({ memory, operator, result }: Calculate): number {
   if (operator === '-') {
-    return result - Number(digits)
+    return memory - result
   }
   if (operator === '+') {
-    return result + Number(digits)
+    return memory + result
   }
   if (operator === 'x') {
-    return result * Number(digits)
+    return memory * result
   }
   if (operator === '/') {
-    return result / Number(digits)
+    return memory / result
   }
   return 0
 }

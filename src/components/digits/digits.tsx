@@ -5,15 +5,11 @@ import { Button } from '../button/button'
 import { digits } from '../../data/data'
 import { setDigit } from '../../store/calculatorSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { DragItems } from '../../types/types'
+import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-type ComponentType = {
-  id?: string
-}
-
-export function Digits({ id }: ComponentType) {
-  const { list } = useAppSelector((state) => state.construction)
+export function Digits({ id, onDoubleClick }: ComponentType) {
+  const { list, isRuntime } = useAppSelector((state) => state.construction)
   const { ref, isOver } = useDragAndDrop(id)
   const dispatch = useAppDispatch()
   const [, dragRef] = useDrag(() => ({
@@ -29,10 +25,13 @@ export function Digits({ id }: ComponentType) {
     dispatch(setDigit(value))
   }
 
+  const digitsRef = list.includes(DragItems.digits) ? ref : dragRef
+
   return (
     <section
       className={`${styles.digits} ${isOver && styles.drop}`}
-      ref={list.includes(DragItems.digits) ? ref : dragRef}
+      ref={isRuntime ? null : digitsRef}
+      onDoubleClick={onDoubleClick}
     >
       {
         digits.map((item) => {

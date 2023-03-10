@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const enum DragItems {
+export enum DragItems {
     digits = 'digits',
     equal = 'equal',
     operators = 'operators',
@@ -10,6 +10,7 @@ export const enum DragItems {
 
 export type ComponentType = {
     id?: string
+    onDoubleClick?: () => void
 }
 
 export type ButtonType = {
@@ -17,7 +18,13 @@ export type ButtonType = {
   onClick: () => void
   children?: React.ReactElement | undefined
   width?: string | undefined
+  height?: string | undefined
   backgroundColor?: string | undefined
   color?: string | undefined
+  borderColor?: string | undefined
   disabled?: boolean
+}
+
+export type ImageType = {
+  color?: string | undefined
 }
