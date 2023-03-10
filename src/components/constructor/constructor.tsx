@@ -38,7 +38,7 @@ export function Constructor() {
             <Digits
               id={item}
               key={item}
-              onDoubleClick={() => handleDoubleClick(item)}
+              onDoubleClick={() => handleDoubleClick(DragItems.digits)}
             />
           )
         }
@@ -47,7 +47,7 @@ export function Constructor() {
             <Equal
               id={item}
               key={item}
-              onDoubleClick={() => handleDoubleClick(item)}
+              onDoubleClick={() => handleDoubleClick(DragItems.equal)}
             />
           )
         }
@@ -56,7 +56,7 @@ export function Constructor() {
             <Operators
               id={item}
               key={item}
-              onDoubleClick={() => handleDoubleClick(item)}
+              onDoubleClick={() => handleDoubleClick(DragItems.operators)}
             />
           )
         }

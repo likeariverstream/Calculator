@@ -18,7 +18,6 @@ export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   }), [])
 
   const displayRef = list.includes(DragItems.display) ? null : dragRef
-
   return (
     <section
       className={styles.display}

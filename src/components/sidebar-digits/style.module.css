@@ -1,13 +1,12 @@
 @import url(../../styles/vars.css);
 
-.equal {
-    width: 240px;
-    height: 72px;
+.digits {
     display: flex;
     padding: 4px;
     gap: 8px;
     width: 240px;
     box-sizing: border-box;
+    flex-wrap: wrap;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
     border-radius: 4px;
 }
@@ -15,3 +14,4 @@
 .drop {
     outline: 1px solid var(--iris-color); 
 }
+

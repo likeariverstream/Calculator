@@ -1,8 +1,8 @@
 @import url(../../styles/vars.css);
 
-.equal {
+.operators {
     width: 240px;
-    height: 72px;
+    height: 56px;
     display: flex;
     padding: 4px;
     gap: 8px;

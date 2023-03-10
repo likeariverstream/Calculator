@@ -23,8 +23,8 @@ export function Header() {
       <Button
         value="Runtime"
         onClick={handleRuntimeButtonClick}
-        width="133px"
-        height="33px"
+        width={isRuntime ? '133px' : '110px'}
+        height="36px"
         disabled={false}
         backgroundColor={isRuntime ? colors.whiteColor : colors.lightGrayColor}
         borderColor={isRuntime ? colors.grayColor : colors.lightGrayColor}
@@ -35,8 +35,8 @@ export function Header() {
       <Button
         value="Constructor"
         onClick={handleConstructorButtonClick}
-        width="133px"
-        height="33px"
+        width={!isRuntime ? '133px' : '110px'}
+        height="36px"
         disabled={false}
         backgroundColor={!isRuntime ? colors.whiteColor : colors.lightGrayColor}
         borderColor={!isRuntime ? colors.grayColor : colors.lightGrayColor}

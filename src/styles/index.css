@@ -1,6 +1,10 @@
-body {
+html {
   max-width: 635px;
   margin: 0 auto;
+}
+
+body {
+  margin: 0;
   display: flex;
   flex-direction: column;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;

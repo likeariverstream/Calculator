@@ -28,6 +28,9 @@ export const calculatorSlice = createSlice({
       } else if (payload === ',') {
         state.digits = state.digits.concat('.')
       }
+      if (state.digits.length > 8) {
+        state.digits = Number(state.digits).toString().slice(0, 9)
+      }
     },
     setOperator: (state, { payload }) => {
       state.result = Number(state.digits)
