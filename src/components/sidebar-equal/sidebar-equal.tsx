@@ -5,14 +5,14 @@ import { operators } from '../../data/data'
 import { Button } from '../button/button'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { calculateResult } from '../../store/calculatorSlice'
-import { DragItems, ComponentType } from '../../types/types'
+import { DragItems } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 import { colors } from '../../data/colors'
 
-export function SidebarEqual({ id, onDoubleClick, opacity = 1 }: ComponentType) {
+export function SidebarEqual() {
   const dispatch = useAppDispatch()
-  const { list, isRuntime } = useAppSelector((state) => state.construction)
-  const { isOver } = useDragAndDrop(id)
+  const { list } = useAppSelector((state) => state.construction)
+  const { isOver } = useDragAndDrop(DragItems.equal)
 
   const [, dragRef] = useDrag(() => ({
     type: DragItems.equal,
@@ -28,12 +28,15 @@ export function SidebarEqual({ id, onDoubleClick, opacity = 1 }: ComponentType) 
     dispatch(calculateResult())
   }
   const equalRef = list.includes(DragItems.equal) ? null : dragRef
+  const opacity = list.includes(DragItems.equal) ? 0.5 : 1
+  const cursor = list.includes(DragItems.equal) ? 'default' : 'move'
+  const border = isOver ? `1px solid ${colors.irisColor}` : ''
   return (
     <section
       className={`${styles.equal} ${isOver && styles.drop}`}
-      style={{ border: isOver ? `1px solid ${colors.irisColor}` : '', cursor: isRuntime ? 'default' : 'move', opacity }}
+      style={{ border, cursor, opacity }}
       ref={equalRef}
-      onDoubleClick={onDoubleClick}
+      id={DragItems.equal}
     >
       {operators.map((item) => {
         if (item.value === '=') {

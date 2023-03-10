@@ -18,6 +18,7 @@ export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   }), [])
 
   const displayRef = list.includes(DragItems.display) ? null : dragRef
+  const cursor = (isRuntime || list.includes(DragItems.display)) ? 'default' : 'move'
   return (
     <section
       className={styles.display}
@@ -27,7 +28,7 @@ export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
     >
       <div
         className={styles.container}
-        style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
+        style={{ cursor, opacity }}
       >
         <span className={styles.value}>{result === Infinity ? 'Не определено' : digits}</span>
       </div>

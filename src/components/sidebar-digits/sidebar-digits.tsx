@@ -5,12 +5,12 @@ import { Button } from '../button/button'
 import { digits } from '../../data/data'
 import { setDigit } from '../../store/calculatorSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { DragItems, ComponentType } from '../../types/types'
+import { DragItems } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-export function SidebarDigits({ id, onDoubleClick, opacity = 1 }: ComponentType) {
+export function SidebarDigits() {
   const { list, isRuntime } = useAppSelector((state) => state.construction)
-  const { isOver } = useDragAndDrop(id)
+  const { isOver } = useDragAndDrop(DragItems.digits)
   const dispatch = useAppDispatch()
   const [, dragRef] = useDrag(() => ({
     type: DragItems.digits,
@@ -25,13 +25,13 @@ export function SidebarDigits({ id, onDoubleClick, opacity = 1 }: ComponentType)
     dispatch(setDigit(value))
   }
   const digitsRef = list.includes(DragItems.digits) ? null : dragRef
-
+  const opacity = list.includes(DragItems.digits) ? 0.5 : 1
+  const cursor = list.includes(DragItems.digits) ? 'default' : 'move'
   return (
     <section
       className={`${styles.digits} ${isOver && styles.drop}`}
       ref={digitsRef}
-      onDoubleClick={onDoubleClick}
-      style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
+      style={{ cursor, opacity }}
     >
       {
         digits.map((item) => {

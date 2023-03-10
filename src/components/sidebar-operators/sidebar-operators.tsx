@@ -5,13 +5,13 @@ import { operators } from '../../data/data'
 import { Button } from '../button/button'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setOperator } from '../../store/calculatorSlice'
-import { DragItems, ComponentType } from '../../types/types'
+import { DragItems } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-export function SidebarOperators({ id, onDoubleClick, opacity = 1 }: ComponentType) {
+export function SidebarOperators() {
   const dispatch = useAppDispatch()
   const { list, isRuntime } = useAppSelector((state) => state.construction)
-  const { isOver } = useDragAndDrop(id)
+  const { isOver } = useDragAndDrop(DragItems.operators)
   const [, dragRef] = useDrag(() => ({
     type: DragItems.operators,
     item: {
@@ -26,12 +26,14 @@ export function SidebarOperators({ id, onDoubleClick, opacity = 1 }: ComponentTy
   }
 
   const operatorsRef = list.includes(DragItems.operators) ? null : dragRef
+  const opacity = list.includes(DragItems.operators) ? 0.5 : 1
+  const cursor = list.includes(DragItems.operators) ? 'default' : 'move'
   return (
     <section
       className={`${styles.operators} ${isOver && styles.drop}`}
       ref={operatorsRef}
-      onDoubleClick={onDoubleClick}
-      style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
+      style={{ cursor, opacity }}
+      id={DragItems.operators}
     >
       {operators.map((item) => {
         if (item.value !== '=') {
