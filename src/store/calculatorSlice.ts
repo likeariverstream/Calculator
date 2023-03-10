@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { CalculatorState } from '../types/types'
 import { calculate } from '../utils/calculate'
 
-type InitialState = {
-  digits: string
-  operator: string
-  result: number
-  memory: number
-}
-
-const initialState: InitialState = {
+const initialState: CalculatorState = {
   digits: '0',
   operator: '',
   result: 0,
@@ -58,6 +52,12 @@ export const calculatorSlice = createSlice({
       state.operator = ''
       state.result = 0
     },
+    clearCalculator: (state) => {
+      state.digits = initialState.digits
+      state.operator = initialState.operator
+      state.result = initialState.result
+      state.memory = initialState.memory
+    },
   },
 })
 
@@ -65,6 +65,7 @@ export const {
   setDigit,
   setOperator,
   calculateResult,
+  clearCalculator,
 } = calculatorSlice.actions
 
 export default calculatorSlice.reducer

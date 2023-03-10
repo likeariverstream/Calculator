@@ -1,3 +1,5 @@
+@import url(../../styles/vars.css);
+
 .equal {
     width: 240px;
     height: 56px;
@@ -11,5 +13,5 @@
 }
 
 .drop {
-    outline: 1px solid #5D5FEF; 
+    outline: 1px solid var(--iris-color); 
 }

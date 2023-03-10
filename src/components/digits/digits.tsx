@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-export function Digits({ id, onDoubleClick }: ComponentType) {
+export function Digits({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   const { list, isRuntime } = useAppSelector((state) => state.construction)
   const { ref, isOver } = useDragAndDrop(id)
   const dispatch = useAppDispatch()
@@ -24,21 +24,37 @@ export function Digits({ id, onDoubleClick }: ComponentType) {
   const handleClick = (value: string) => {
     dispatch(setDigit(value))
   }
-
-  const digitsRef = list.includes(DragItems.digits) ? ref : dragRef
+  const dropped = list.includes(DragItems.digits)
+  const digitsRef = dropped ? ref : dragRef
 
   return (
     <section
       className={`${styles.digits} ${isOver && styles.drop}`}
       ref={isRuntime ? null : digitsRef}
       onDoubleClick={onDoubleClick}
+      style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
     >
       {
         digits.map((item) => {
           if (item.value === '0') {
-            return <Button value={item.value} onClick={() => handleClick(item.value)} key={item.id} width="152px" />
+            return (
+              <Button
+                value={item.value}
+                onClick={() => handleClick(item.value)}
+                key={item.id}
+                width="152px"
+                disabled={!isRuntime}
+              />
+            )
           }
-          return <Button value={item.value} onClick={() => handleClick(item.value)} key={item.id} />
+          return (
+            <Button
+              value={item.value}
+              onClick={() => handleClick(item.value)}
+              key={item.id}
+              disabled={!isRuntime}
+            />
+          )
         })
       }
     </section>

@@ -1,0 +1,15 @@
+:root {
+    --white-color: #FFFFFF;
+    --black-color: #000000;
+    --gray-color: #E2E3E5;
+    --iris-color: #5D5FEF;
+    --light-blue-color: #F0F9FF;
+    --light-gray-color: #F3F4F6;
+    --dark-gray-color: #4D5562;
+    --gray-white-color: #C4C4C4;
+    --space-gray-color: #6B7280;
+    --font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    --extra-bold-weight: 800;
+    --medium-weight: 500;
+    --regular-weight: 400;
+}

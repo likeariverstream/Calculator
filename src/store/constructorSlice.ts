@@ -1,12 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { swap } from '../utils/swap'
-import { DragItems } from '../types/types'
+import { ConstructorState, DragItems } from '../types/types'
 
-type InitialState = {
-  list: string[]
-  isRuntime: boolean
-}
-const initialState: InitialState = {
+const initialState: ConstructorState = {
   list: [],
   isRuntime: false,
 }
@@ -20,7 +16,7 @@ export const constructorSlice = createSlice({
           state.list.push(payload)
         }
       } catch (err) {
-        console.warn(`Error: ${err}`)
+        throw new Error()
       }
     },
     deleteComponent: (state, { payload }) => {

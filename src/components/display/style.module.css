@@ -1,3 +1,5 @@
+@import url(../../styles/vars.css);
+
 .display {
     width: 240px;
     height: 60px;
@@ -11,17 +13,22 @@
     align-items: center;
 }
 
-.input {
+.container {
+    display: flex;
     margin: 0;
     width: 232px;
     height: 52px;
     border-radius: 6px;
+    align-items: center;
     justify-content: flex-end;
-    padding: 4px 4px 4px auto;
-    background-color: #F3F4F6;
+    background-color: var(--light-gray-color);
     border: 0;
+    padding-left: 8px;
 }
 
-.input:focus {
-    border: 0;
+.value {
+    font-weight: var(--extra-bold-weight);
+    line-height: 44px;
+    font-size: 36px;
+    margin: 4px 8px;
 }

@@ -5,14 +5,17 @@ import { Operators } from '../operators/operators'
 import { Equal } from '../equal/equal'
 import { Display } from '../display/display'
 import { DragItems } from '../../types/types'
+import { useAppSelector } from '../../store/hooks'
 
 export function Sidebar() {
+  const { list } = useAppSelector((state) => state.construction)
+
   return (
     <section className={styles.sidebar}>
-      <div className={styles.wrapper}><Display id={DragItems.display} /></div>
-      <div className={styles.wrapper}><Operators id={DragItems.operators} /></div>
-      <div className={styles.wrapper}><Digits id={DragItems.digits} /></div>
-      <div className={styles.wrapper}><Equal id={DragItems.equal} /></div>
+      <Display id={DragItems.display} opacity={list.includes(DragItems.display) ? 0.5 : 1} />
+      <Operators id={DragItems.operators} opacity={list.includes(DragItems.operators) ? 0.5 : 1} />
+      <Digits id={DragItems.digits} opacity={list.includes(DragItems.digits) ? 0.5 : 1} />
+      <Equal id={DragItems.equal} opacity={list.includes(DragItems.equal) ? 0.5 : 1} />
     </section>
   )
 }

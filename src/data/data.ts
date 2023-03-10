@@ -1,9 +1,6 @@
-type Digits = {
-    id: number
-    value: string
-}
+import { Digits } from '../types/types'
 
-export const digits: Digits[] = [
+export const digits: Digits = [
   {
     id: 1,
     value: '7',

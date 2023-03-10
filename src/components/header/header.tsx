@@ -5,6 +5,8 @@ import { ConstructorImage } from '../images/constructor-image'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setIsRuntime } from '../../store/constructorSlice'
 import { RuntimeImage } from '../images/runtime-image'
+import { clearCalculator } from '../../store/calculatorSlice'
+import { colors } from '../../data/colors'
 
 export function Header() {
   const dispatch = useAppDispatch()
@@ -13,6 +15,7 @@ export function Header() {
     dispatch(setIsRuntime(true))
   }
   const handleConstructorButtonClick = () => {
+    dispatch(clearCalculator())
     dispatch(setIsRuntime(false))
   }
   return (
@@ -23,10 +26,11 @@ export function Header() {
         width="133px"
         height="33px"
         disabled={false}
-        backgroundColor={isRuntime ? '#FFFFFF' : '#F3F4F6'}
-        borderColor={isRuntime ? '#E2E3E5' : '#F3F4F6'}
+        backgroundColor={isRuntime ? colors.whiteColor : colors.lightGrayColor}
+        borderColor={isRuntime ? colors.grayColor : colors.lightGrayColor}
+        color={colors.darkGrayColor}
       >
-        <RuntimeImage color={isRuntime ? '#5D5FEF' : '#000000'} />
+        <RuntimeImage color={isRuntime ? colors.irisColor : colors.darkGrayColor} />
       </Button>
       <Button
         value="Constructor"
@@ -34,10 +38,11 @@ export function Header() {
         width="133px"
         height="33px"
         disabled={false}
-        backgroundColor={!isRuntime ? '#FFFFFF' : '#F3F4F6'}
-        borderColor={!isRuntime ? '#E2E3E5' : '#F3F4F6'}
+        backgroundColor={!isRuntime ? colors.whiteColor : colors.lightGrayColor}
+        borderColor={!isRuntime ? colors.grayColor : colors.lightGrayColor}
+        color={colors.darkGrayColor}
       >
-        <ConstructorImage color={!isRuntime ? '#5D5FEF' : '#000000'} />
+        <ConstructorImage color={!isRuntime ? colors.irisColor : colors.darkGrayColor} />
       </Button>
 
     </header>

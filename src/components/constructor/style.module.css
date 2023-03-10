@@ -1,3 +1,5 @@
+@import url(../../styles/vars.css);
+
 .construction {
     display: flex;
     flex-direction: column;
@@ -8,5 +10,5 @@
     box-sizing: border-box;
 }
 .over {
-    background-color: #F0F9FF;
+    background-color: var(--light-blue-color);
 }

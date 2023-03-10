@@ -8,7 +8,7 @@ import { setOperator } from '../../store/calculatorSlice'
 import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
 
-export function Operators({ id, onDoubleClick }: ComponentType) {
+export function Operators({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   const dispatch = useAppDispatch()
   const { list, isRuntime } = useAppSelector((state) => state.construction)
   const { ref, isOver } = useDragAndDrop(id)
@@ -31,10 +31,18 @@ export function Operators({ id, onDoubleClick }: ComponentType) {
       className={`${styles.operators} ${isOver && styles.drop}`}
       ref={isRuntime ? null : operatorsRef}
       onDoubleClick={onDoubleClick}
+      style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
     >
       {operators.map((item) => {
         if (item.value !== '=') {
-          return <Button value={item.value} onClick={() => handleClick(item.value)} key={item.id} />
+          return (
+            <Button
+              value={item.value}
+              onClick={() => handleClick(item.value)}
+              key={item.id}
+              disabled={!isRuntime}
+            />
+          )
         }
         return false
       })}

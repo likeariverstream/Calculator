@@ -7,8 +7,9 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { calculateResult } from '../../store/calculatorSlice'
 import { DragItems, ComponentType } from '../../types/types'
 import { useDragAndDrop } from '../../utils/hooks'
+import { colors } from '../../data/colors'
 
-export function Equal({ id, onDoubleClick }: ComponentType) {
+export function Equal({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   const dispatch = useAppDispatch()
   const { list, isRuntime } = useAppSelector((state) => state.construction)
   const { ref, isOver } = useDragAndDrop(id)
@@ -30,7 +31,7 @@ export function Equal({ id, onDoubleClick }: ComponentType) {
   return (
     <section
       className={`${styles.equal} ${isOver && styles.drop}`}
-      style={isOver ? { border: '1px solid #5D5FEF' } : {}}
+      style={{ border: isOver ? `1px solid ${colors.irisColor}` : '', cursor: isRuntime ? 'default' : 'move', opacity }}
       ref={isRuntime ? null : equalRef}
       onDoubleClick={onDoubleClick}
     >
@@ -42,8 +43,8 @@ export function Equal({ id, onDoubleClick }: ComponentType) {
               onClick={handleClick}
               key={item.id}
               width="232px"
-              backgroundColor="#5D5FEF"
-              color="#FFFFFF"
+              backgroundColor={colors.irisColor}
+              color={colors.whiteColor}
             />
           )
         }

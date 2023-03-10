@@ -1,3 +1,5 @@
+@import url(../../styles/vars.css);
+
 .digits {
     display: flex;
     padding: 4px;
@@ -10,5 +12,6 @@
 }
 
 .drop {
-    outline: 1px solid #5D5FEF; 
+    outline: 1px solid var(--iris-color); 
 }
+

@@ -4,9 +4,9 @@ import styles from './style.module.css'
 import { useAppSelector } from '../../store/hooks'
 import { DragItems, ComponentType } from '../../types/types'
 
-export function Display({ id, onDoubleClick }: ComponentType) {
+export function Display({ id, onDoubleClick, opacity = 1 }: ComponentType) {
   const { result, digits } = useAppSelector((state) => state.calculator)
-  const { list } = useAppSelector((state) => state.construction)
+  const { list, isRuntime } = useAppSelector((state) => state.construction)
   const [, dragRef] = useDrag(() => ({
     type: DragItems.display,
     item: {
@@ -26,11 +26,12 @@ export function Display({ id, onDoubleClick }: ComponentType) {
       id={id}
       onDoubleClick={onDoubleClick}
     >
-      <input
-        className={styles.input}
-        value={result === Infinity ? 'Не определено' : digits}
-        readOnly
-      />
+      <div
+        className={styles.container}
+        style={{ cursor: isRuntime ? 'default' : 'move', opacity }}
+      >
+        <span className={styles.value}>{result === Infinity ? 'Не определено' : digits}</span>
+      </div>
     </section>
   )
 }

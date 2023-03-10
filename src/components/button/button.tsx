@@ -1,10 +1,9 @@
 import React from 'react'
 import styles from './style.module.css'
 import { ButtonType } from '../../types/types'
-// import { useAppSelector } from '../../store/hooks'
 
 export function Button({
-  value, onClick, children, width = '72', height = '48', backgroundColor, color, borderColor,
+  value, onClick, children, width = '72', height = '48', backgroundColor, color, borderColor, disabled = false,
 }: ButtonType) {
   return (
     <button
@@ -14,6 +13,7 @@ export function Button({
       style={{
         width, height, backgroundColor, color, borderColor,
       }}
+      disabled={disabled}
     >
       {children}
       {value}

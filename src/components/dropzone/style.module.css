@@ -1,3 +1,5 @@
+@import url(../../styles/vars.css);
+
 svg {
     display: block;
 }
@@ -11,30 +13,34 @@ svg {
     height: 432px;
     border-radius: 6px;
     box-sizing: border-box;
-    border: 2px dashed #C4C4C4;
+    border: 2px dashed var(--gray-white-color);
 }
 
 .description {
     margin-top: 12px;
     margin-bottom: 4px;
+    font-weight: var(--medium-weight);
     font-size: 14px;
     line-height: 17px;
+    font-style: normal;
     text-align: center;
     vertical-align: top;
-    color: #5D5FEF;
+    color: var(--iris-color);
 }
 
 .text {
     margin: 0;
     display: block;
     width: 106px;
+    font-weight: var(--regular-weight);
     font-size: 12px;
+    font-style: normal;
     line-height: 15px;
     text-align: center;
     vertical-align: top;
-    color: #6B7280;
+    color: var(--space-gray-color);
 }
 
 .over {
-    background-color: #F0F9FF;
+    background-color: var(--light-blue-color);
 }

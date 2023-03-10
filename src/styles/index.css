@@ -1,4 +1,7 @@
 body {
-  margin: 0;
+  max-width: 635px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
 }

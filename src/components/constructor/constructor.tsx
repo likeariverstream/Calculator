@@ -11,10 +11,12 @@ import { Operators } from '../operators/operators'
 
 export function Constructor() {
   const dispatch = useAppDispatch()
+  const { list, isRuntime } = useAppSelector((state) => state.construction)
   const handleDoubleClick = (element: string) => {
-    dispatch(deleteComponent(element))
+    if (!isRuntime) {
+      dispatch(deleteComponent(element))
+    }
   }
-  const { list } = useAppSelector((state) => state.construction)
   const [{ isOver }, dropTarget] = useDrop(() => ({
     accept: [DragItems.display, DragItems.digits, DragItems.equal, DragItems.operators],
     drop: (item: { id: string }) => dispatch(addComponent(item.id)),
