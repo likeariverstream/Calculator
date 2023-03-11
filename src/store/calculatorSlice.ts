@@ -28,8 +28,8 @@ export const calculatorSlice = createSlice({
       } else if (payload === ',') {
         state.digits = state.digits.concat('.')
       }
-      if (state.digits.length > 13) {
-        state.digits = Number(state.digits).toString().slice(0, 14)
+      if (state.digits.length > 12) {
+        state.digits = Number(state.digits).toString().slice(0, 13)
       }
     },
     setOperator: (state, { payload }) => {
@@ -37,6 +37,9 @@ export const calculatorSlice = createSlice({
       if (state.operator) {
         const { memory, operator, result } = state
         state.digits = `${calculate({ memory, operator, result })}`
+        if (state.digits.length > 12) {
+          state.digits = Number(state.digits).toString().slice(0, 13)
+        }
         state.memory = Number(state.digits)
         state.operator = payload
         state.result = 0
@@ -51,6 +54,9 @@ export const calculatorSlice = createSlice({
       state.result = Number(state.digits)
       const { memory, operator, result } = state
       state.digits = `${calculate({ memory, operator, result })}`
+      if (state.digits.length > 12) {
+        state.digits = Number(state.digits).toString().slice(0, 13)
+      }
       state.memory = Number(state.digits)
       state.operator = ''
       state.result = 0
